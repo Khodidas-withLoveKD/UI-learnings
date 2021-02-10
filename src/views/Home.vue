@@ -4,6 +4,7 @@
     <h3><router-link to="/profile">Routing Example</router-link></h3>
     <h3><router-link to="/dynamicComp">Dynamic Component Example</router-link></h3>
     <h3><router-link to="/nestedroutes">Nested Routing Example</router-link></h3>
+    <h3><router-link to="/testing">Few Tests Here !!!</router-link></h3>
   </div>
 </template>
 
