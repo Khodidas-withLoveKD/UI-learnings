@@ -5,6 +5,7 @@
     <h3><router-link to="/dynamicComp">Dynamic Component Example</router-link></h3>
     <h3><router-link to="/nestedroutes">Nested Routing Example</router-link></h3>
     <h3><router-link to="/testing">Few Tests Here !!!</router-link></h3>
+    <h3><router-link to="/grid-view">Grid View Responsive Site !!!</router-link></h3>
   </div>
 </template>
 
