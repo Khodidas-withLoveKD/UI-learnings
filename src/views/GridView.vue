@@ -49,9 +49,6 @@ img{
 #dp{
   border-radius: 50%;
 }
-.grid-view-container{
-  // display: flex;
-}
 .cover-photo{
   position: relative;
 }
