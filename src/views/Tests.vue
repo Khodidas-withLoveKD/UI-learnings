@@ -89,8 +89,9 @@ export default {
         setTimeout(reject, 200, console.error('Gor error '))
       })
       Promise.all([promise1, promise2])
-        .then((responses) => {
-          console.log('responses = ', responses)
+        .then(([response1, response2]) => {
+          console.log('response1 = ', response1)
+          console.log('resp 2 = ', response2)
         })
     }
   }
