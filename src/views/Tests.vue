@@ -4,6 +4,7 @@
       <button type="button" @click="fetchUrlUsingThen"> using .then()</button>
       <button type="button" @click="fetchUrlUsingAsyncAwait"> using async-await</button>
       <button type="button" @click="fetchUrlUsingPromiseAll"> using Promise.all() to hit two APIs at a time</button>
+      <button type="button" @click="fetchUrlUsingPostman"> using Postman to Mock Server</button>
     </div>
     <p> A lot of text here that you cannot imagine. Well, you can imagine but as yu see you have to read a lot and still you are reading it and I suggest you to stop but I know you won't. Stop I said !!! Well, it seems you are very stubborn. Well, go on and waste time to read which may not make much sense to you. Anyways..... thanks for giving so much time in reading this!!!!  A lot of text here that you cannot imagine. Well, you can imagine but as yu see you have to read a lot and still you are reading it and I suggest you to stop but I know you won't. Stop I said !!! Well, it seems you are very stubborn. Well, go on and waste time to read which may not make much sense to you. Anyways..... thanks for giving so much time in reading this!!!!</p>
     <!-- making a div and inside keeping many images componenets, passing values through prop -->
@@ -58,6 +59,13 @@ export default {
     }
   },
   methods: {
+    fetchUrlUsingPostman () {
+      const url = 'https://96d1fd2c-dc66-4b89-a33c-302fe6d66cce.mock.pstmn.io/stuff/'
+      axios.get(url)
+        .then((response) => {
+          console.log('Psotman Resp = ', response.data)
+        })
+    },
     fetchUrlUsingThen () {
       axios.get(this.queryUrl + this.user)
         .then(resp => {

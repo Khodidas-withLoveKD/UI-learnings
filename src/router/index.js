@@ -11,6 +11,30 @@ const routes = [
     component: Home
   },
   {
+    path: '/transitions',
+    name: 'Transitions',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Transitions.vue')
+  },
+  {
+    path: '/drragable-div',
+    name: 'DraggableDiv',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/DragAndDrop.vue')
+  },
+  {
+    path: '/watch-vs-computed',
+    name: 'Watch-Vs-Computed',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/WatchVsComputed.vue')
+  },
+  {
     path: '/testing',
     name: 'Tests',
     // route level code-splitting
