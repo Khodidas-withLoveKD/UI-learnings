@@ -17,12 +17,12 @@
     <div class="same-as-project">
         <transition-group type="transition">
           <ul v-for="box in boxes" :key="box.id">
-            <draggable v-model="boxes" @start="drag=true" @end="drag=false" filter='.preventOnFilter=false'>
+            <draggable v-model="boxes" @start="drag=true" @end="drag=false">
             <li>
               <div id="drag-box"></div>
               Name: {{ box.name }} <br>
               Phone: {{ box.phone }}
-              <input type="text" placeholder="Something  Here">
+              <input type="text" placeholder="Something  Here" @click="stop($event)">
             </li>
             </draggable>
           </ul>
@@ -30,7 +30,7 @@
     </div>
     <hr>
     <div class="another-test">
-      <draggable v-model="boxes" @start="drag=true" @end="drag=false" filter='.preventOnFilter:false'>
+      <draggable v-model="boxes" @start="drag=true" @end="drag=false" v-bind="getOptions()">
         <div v-for="element in boxes" :key="element.id">
           <li>
             {{element.name}}<br>
@@ -56,6 +56,18 @@ export default {
     preventDrag (event) {
       console.log('Inside PreventDrag')
       event.preventDefault()
+    },
+    stop (event) {
+      console.log('Inside stop:')
+      event.stopPropagation()
+    },
+    getOptions () {
+      const options = {
+        filter: 'input',
+        preventOnFilter: false
+      }
+      console.log('options:', options)
+      return options
     }
   },
   data () {
