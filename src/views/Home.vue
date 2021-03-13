@@ -1,6 +1,10 @@
 <template>
   <div class="home">
     <h1>This is the first page</h1>
+    <h3><router-link to="/vue-scroll-to">Vue Scrool To Example</router-link></h3>
+    <h3><router-link to="/collection-validation">Collection Validation using Vuelidate</router-link></h3>
+    <h3><router-link to="/vuelidate">Form Validation using Vuelidate</router-link></h3>
+    <h3><router-link to="/v-models">Different types of v-models</router-link></h3>
     <h3><router-link to="/profile">Routing Example</router-link></h3>
     <h3><router-link to="/dynamicComp">Dynamic Component Example</router-link></h3>
     <h3><router-link to="/nestedroutes">Nested Routing Example</router-link></h3>
