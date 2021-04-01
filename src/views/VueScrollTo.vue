@@ -1,20 +1,30 @@
 <template>
   <div id="scroll-to">
-    <button v-scroll-to="'#element'">
-      Scroll to #element
-    </button>
-    <h1 id="element">Hi. I'm element</h1>
+    <PropTesting :flag="false" :component="component">Flag = false</PropTesting>
+    <PropTesting :flag="true" :component="component">Flag = true</PropTesting>
+    {{ component.value }}
   </div>
 </template>
 
 <script>
-// import VueScrollTo from 'vue-scrollto'
+import PropTesting from '../components/PropTesting'
 export default {
-  // mixins: [VueScrollTo],
-  // VueScrollTo: {
-  //   easing: 'ease-in',
-  //   duration: 2000
   components: {
+    PropTesting
+  },
+  data () {
+    return {
+      component: {
+        value: 'Value',
+        name: 'Name'
+      }
+    }
+  },
+  watch: {
+    component (newVal, oldVal) {
+      console.log('oldVal:', oldVal)
+      console.log('newVal:', newVal)
+    }
   }
 }
 </script>

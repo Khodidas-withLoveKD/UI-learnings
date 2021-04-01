@@ -8,6 +8,7 @@ export default ({
   },
   getters: {
     getProfileDetails (state) {
+      console.log('INSIDE getProfileDetails:')
       return state.profileDetails
     }
   },

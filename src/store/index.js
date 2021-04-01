@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import profileDetailsStore from './profileDetailsStore'
-import VueScrollTo from 'vue-scrollto'
+import testStore from './test-store'
 Vue.use(Vuex)
-Vue.use(VueScrollTo)
 
 export default new Vuex.Store({
   state: {
@@ -13,6 +12,7 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    profileDetailsStore
+    profileDetailsStore,
+    testStore
   }
 })

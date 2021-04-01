@@ -2,9 +2,9 @@
   <div id="form-validation">
     <form class="form" @submit.prevent="validate">
       <div v-for="(detail, index) in details" :key="detail.index" :set="v = $v.details.$each.$iter">
-        <p>name: <input type="text" ref="name" :ref-key="index" v-model="detail.name" :class="status(v[index].name)" @keypress="v[index].name.$touch"></p>
-        <p>email: <input type="text" ref="email" :ref-key="index" v-model="detail.email" :class="emailStatus(v[index].email)" @keypress="v[index].email.$touch"></p>
-        <p>age: <input type="number" ref="age" :ref-key="index" v-model="detail.age"></p>
+        <p>name: <input type="text" ref="name" v-model="detail.name" :class="status(v[index].name)" @keypress="v[index].name.$touch"></p>
+        <p>email: <input type="text" ref="email" v-model="detail.email" :class="emailStatus(v[index].email)" @keypress="v[index].email.$touch"></p>
+        <p>age: <input type="number" ref="age" v-model="detail.age"></p>
       </div>
       <button type="submit">Submit</button>
     </form>
@@ -105,6 +105,33 @@ export default {
                 // if found one invalid field => break out of validate ()
                 return
               }
+            }
+          }
+        }
+      }
+    },
+    validateNameAndFileUpload () {
+      if (this.$v.$invalid) {
+        console.log('IF => this.$v', this.$v)
+        for (const key in Object.entries(this.$v)) {
+          const input = Object.keys(this.$v)[key]
+          if (input.includes('$')) return false
+          console.log('AFTER IF => input:', input)
+          console.log('$v[input] = ', this.$v[input])
+          console.log('this.$v[input].$invalid = ', this.$v[input].$invalid)
+          if (this.$v[input].$invalid) {
+            console.log('input:', input)
+            console.log('this.$refs[input] = ', this.$refs[input])
+            if (input === 'uploadedFileName') {
+              console.log('INSIDE IF')
+              const temp = 'fileInput'
+              this.$nextTick(() =>
+                this.$refs[temp].focus())
+              break
+            } else {
+              this.$refs[input].focus()
+              console.log('input:', input)
+              break
             }
           }
         }
