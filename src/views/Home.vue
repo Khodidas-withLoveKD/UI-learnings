@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1>This is the first page</h1>
-    <h3><router-link to="/image-converter">Image Converter</router-link></h3>
+    <h3><router-link to="/video-player">Video Player</router-link></h3>
     <h3><router-link to="/date-picker">DatePicker</router-link></h3>
     <h3><router-link to="/vue-scroll-to">Props Example</router-link></h3>
     <h3><router-link to="/collection-validation">Collection Validation using Vuelidate</router-link></h3>

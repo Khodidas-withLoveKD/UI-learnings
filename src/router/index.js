@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/video-player',
+    name: 'VideoPlayer',
+    component: () => import('../views/VideoPlayer.vue')
+  },
+  {
     path: '/image-converter',
     name: 'StorImageConvertere',
     // route level code-splitting
