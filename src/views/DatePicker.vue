@@ -1,66 +1,35 @@
 <template>
-  <div id="store">
-    <DatePicker
-      format="dd MMMM yyyy"
-      v-model="updateDate"
-    ></DatePicker>
-    <!-- <p>{{ myDate }}</p> -->
-    <button @click="formatDate">Just do it</button>
+  <div class="loader">
   </div>
 </template>
 
 <script>
-import DatePicker from 'vuejs-datepicker'
-import dateFormatter from './js/date-formatter'
 export default {
-  components: {
-    DatePicker
-  },
-  data () {
-    return {
-      dates: [
-        {
-          value: new Date(),
-          name: 'Something'
-        },
-        {
-          value: new Date('December 17, 1995 03:24:00'),
-          name: 'yo'
-        }
-      ]
-    }
-  },
-  methods: {
-    formatDate () {
-      console.log('this.dates:', this.dates)
-      dateFormatter.modifyDate(this.dates)
-      console.log('this.dates:', this.dates)
-    }
-  },
-  watch: {
-    'date.today': function (newDate, oldDate) {
-      // console.log('Date = ', newDate.getDate())
-      // console.log('Month = ', newDate.getMonth() + 1)
-      // console.log('Year = ', newDate.getFullYear())
-    }
-  },
-  computed: {
-    // myDate () {
-    //   return moment(this.date.today).format('DD MMMM YYYY')
-    // },
-    updateDate: {
-      get () {
-        return this.date
-      },
-      set (unformattedDate) {
-        //
-      }
-    }
+  mounted () {
+    console.log('Loader Mounted')
   }
 }
-
 </script>
 
-<style>
+<style lang="scss" scoped>
+.loader {
+  border: 16px solid #3498db;
+  border-radius: 50%;
+  border-top: 16px solid #f3f3f3;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
 
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 </style>

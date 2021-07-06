@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/circular-menu',
+    name: 'CircularMenu',
+    component: () => import('../views/CircularMenu.vue')
+  },
+  {
     path: '/video-player',
     name: 'VideoPlayer',
     component: () => import('../views/VideoPlayer.vue')
