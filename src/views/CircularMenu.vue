@@ -8,12 +8,15 @@
         <div class="circle--main">
           <div class="menu__item notes__rect">
             <img src="@/assets/Notes.svg" class="icons notes__icon" />
+            <span class="info__text">Notes</span>
           </div>
           <div class="menu__item history__rect">
             <img src="@/assets/History.svg" class="icons history__icon" />
+            <span class="info__text">History</span>
           </div>
           <div class="menu__item dashboard__rect">
             <img src="@/assets/Dashboard.svg" class="icons dashboard__icon" />
+            <span class="info__text">Dashboard</span>
           </div>
         </div>
     </div>
@@ -38,23 +41,6 @@ export default {
 #menu input[type="checkbox"] {
     display: none;
 }
-.circle--main {
-  // position: relative;
-  display: flex;
-  align-items: center;
-  // text-align: center;
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  border: 50px solid #000;
-}
-#menu__active:checked ~ label .menu__toggle {
-  transition: all 1s;
-}
-#menu__active:checked ~ label .menu__listings {
-  transform: rotate(1deg) scale(1);
-  transition: transform 1s;
-}
 .menu__listings {
   z-index: 10;
   position: relative;
@@ -68,6 +54,23 @@ export default {
   // padding: 20px;
   transform: scale(0.3) rotate(180deg);
   // transform-origin: 0% 50%;
+  transition: transform 1s;
+}
+.circle--main {
+  // position: relative;
+  display: flex;
+  align-items: center;
+  // text-align: center;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  border: 55px solid #000;
+}
+#menu__active:checked ~ label .menu__toggle {
+  transition: all 1s;
+}
+#menu__active:checked ~ label .menu__listings {
+  transform: rotate(1deg) scale(1);
   transition: transform 1s;
 }
 .menu {
@@ -91,7 +94,7 @@ export default {
   &__item {
     position: absolute;
     height: 15%;
-    width: 72%;
+    width: 65%;
     left: 145px;
     // border: 2px solid orange;
   }
@@ -112,7 +115,7 @@ export default {
 }
 .icons {
   // background-color: black;
-  height: 100%;
+  height: 95%;
   width: 25%;
   float: right;
 }
@@ -124,5 +127,35 @@ export default {
 }
 .dashboard__icon {
   transform: rotate(-80deg);
+}
+.info__text {
+  display: none;
+}
+.notes__icon:hover + .info__text {
+  display: block;
+  color: red;
+  transform: rotate(-10deg);
+  position: relative;
+  // top: 3px;
+  bottom: 7px;
+  left: 120px;
+}
+.history__icon:hover + .info__text {
+  display: block;
+  color: red;
+  transform: rotate(-40deg);
+  position: relative;
+  // top: 3px;
+  bottom: 30px;
+  left: 120px;
+}
+.dashboard__icon:hover + .info__text {
+  display: block;
+  color: red;
+  transform: rotate(-80deg);
+  position: relative;
+  // top: 3px;
+  bottom: 31px;
+  left: 105px;
 }
 </style>
