@@ -35,6 +35,7 @@ export default {
   height: 200px;
   width: 200px;
   position: absolute;
+  // pointer-events: none;
   // top: -22vh;
   // left: -20vw;
 }

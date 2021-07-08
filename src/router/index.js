@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/star-ratings',
+    name: 'AwesomeStarRating',
+    component: () => import('../views/AwesomeStarRating.vue')
+  },
+  {
     path: '/circular-menu',
     name: 'CircularMenu',
     component: () => import('../views/CircularMenu.vue')
