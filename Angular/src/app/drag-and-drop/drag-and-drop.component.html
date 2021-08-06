@@ -1,8 +1,109 @@
-<div cdkDropList
-  class="example-list"
-  cdkDropListOrientation="horizontal"
-  (cdkDropListDropped)="drop($event)"
->
-  <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+<div ng-controller="dragAndDrop">
+  <div cdkDropList
+    class="example-list"
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="drop($event)"
+    >
+    <div class="example-box"
+      *ngFor="let movie of movies"
+      cdkDrag
+      >
+      {{movie}}
+    </div>
+  </div><br><br><br>
+  <div class="example-list carousel-container">
+    <div class="example-box"
+      *ngFor="let movie of movies"
+    >
+      <span class="draggable-item" draggable="true">
+        {{ movie }}
+      </span>
+    </div>
+  </div>
+  <!-- <h2>================</h2> -->
+  <!-- <div class="carousel-item" id="carousel_{{$index}} " ng-repeat="item in nodedata.carousel track by $index">
+    <button type="button" ng-if="nodedata.source === setLabelValues.carousalModal.sourceOptions.static.value" class='close carousel-close' ng-click='removecarousel($index)'>&times;</button>
+    <div class="row border-none pb-0">
+      <div class="col-md-12 carousel-item-header">
+          <div class="addimage_popup mt-neg-15" ng-show="$index==popuptab">
+              <button type="button" class='close mt-neg-25 mr-neg-20' ng-click='removepopup($index); resolvedUrlImageForCarousel($index);'>&times;</button>
+              <div class="pb-10">
+                  <label ng-bind="setLabelValues.carousalModal.labelTags.selectAnImage" class="fw-600"></label>
+                  <a uib-tooltip="{{setLabelValues.carousalModal.toolTips.imageTooltip}}" tooltip-placement="right"
+                      tooltip-trigger="'mouseenter'" class="setting_tooltip width-40">
+                      <img src="/static/portalV2/images/generic/helpText.svg"></img>
+                  </a>
+                  <input type="text" ng-change="validImageUrlForCarousel(item.image_url)" ng-model="item.image_url" placeholder="{{setLabelValues.carousalModal.placeHolders.enterUrl}}" class="width-100 pr-60" mentio mentio-typed-text="typedTerm"
+                  mentio-trigger-char="'{'" mentio-select="renderVariable(item)" mentio-items="variables | filter:label:typedTerm">
+                  <button type="button" ng-bind="setLabelValues.buttons.browse" ngf-select="uploadCarouselImage($file, $index)" ng-model="imagefile" name="imagefile" accept="image/jpg, image/jpeg, image/png, image/gif"
+                  ngf-max-size="1MB" class="btn btn-browse"></button>
+                  <span ng-if="show_image_loader === true" class="upload-loader"></span>
+                  <div ng-if="valid_image_url_carousel === false && item.image_url!=='' && show_image_loader === false">
+                      <span class="text-red" ng-bind="setLabelValues.carousalModal.warning"></span>
+                      <span ng-bind="setLabelValues.carousalModal.warningMessage"></span>
+                  </div>
+              </div>
+              <div class="mt-10">
+                  <label ng-bind="setLabelValues.carousalModal.labelTags.altText" class="fw-600"></label>
+                  <a uib-tooltip="{{setLabelValues.carousalModal.toolTips.imageAltText}}" tooltip-placement="right"
+                      tooltip-trigger="'mouseenter'" class="setting_tooltip width-40">
+                      <img src="/static/portalV2/images/generic/helpText.svg"></img>
+                  </a>
+                  <input type="text" ng-model="item.image_alt_text"
+                      placeholder="{{setLabelValues.carousalModal.placeHolders.enterAltText}}" class="width-100 mt-10">
+              </div>
+              <div class="mt-20" ng-if="setValues.isCardSeamlessEnabled">
+                  <label ng-bind="setLabelValues.carousalModal.labelTags.specifyGradient" class="fw-600"></label>
+                  <a uib-tooltip="{{setLabelValues.carousalModal.toolTips.specifyGradientToolTip}}" tooltip-placement="right" tooltip-trigger="'mouseenter'" class="setting_tooltip width-40">
+                      <img src="/static/portalV2/images/generic/helpText.svg"></img>
+                  </a>
+                  <div>
+                      <div class="col-md-6 input-color">
+                          <div class="input-color-label ml-neg-13">
+                              <label colorpicker="hex" ng-model="item.gradient_top_color" ng-style="{'background-color':item.gradient_top_color}" class="colorpicker border-grey web-color-picker"></label>
+                          </div>
+                          <input ng-model="item.gradient_top_color" type="text" class="width-75">
+                      </div>
+                      <div class="col-md-6 input-color">
+                          <div class="input-color-label ml-neg-13">
+                              <label colorpicker="hex" ng-model="item.gradient_bottom_color" ng-style="{'background-color':item.gradient_bottom_color}" class="colorpicker border-grey web-color-picker"></label>
+                          </div>
+                          <input ng-model="item.gradient_bottom_color" type="text" class="width-75">
+                      </div>
+                  </div>     
+              </div>
+          </div>
+          <button type="button" ng-if="!item.image_url || !item.is_image_url_resolved" class="custom_carousel_button carousel-image-container" ng-click="popup($index)">
+              <i class="ti-image custom_carousel_defaulticon"></i>
+              <div ng-if="!item.is_image_url_resolved" class="carousel-image-container-warning" ng-bind="setLabelValues.carousalModal.unresolved"></div>
+          </button>
+          <img alt="No image found" ng-click="popup($index)" src="{{item.image_url}}" class="custom_carousel_image carousel-image-container" ng-if="item.is_image_url_resolved && item.image_url">
+          <div class="pt-10">
+          <input type="text" ng-model="item.default_action.url" placeholder="{{setLabelValues.carousalModal.placeHolders.enterUrl}}" class="custom_carousel_input" mentio mentio-typed-text="typedTerm"
+          mentio-trigger-char="'{'" mentio-select="renderVariable(item)" mentio-items="variables | filter:label:typedTerm">
+          </div>
+      </div>
+      <div class="col-md-12">
+          <input type="text" ng-model="item.title" placeholder="{{setLabelValues.carousalModal.placeHolders.typeHeading}}" class="custom_carousel_input fw-bold" mentio mentio-typed-text="typedTerm"
+          mentio-trigger-char="'{'" mentio-select="renderVariable(item)" mentio-items="variables | filter:label:typedTerm">
+      </div>
+      <div data-qa="carousel-subtitle-input" class="col-md-12 node-msg-text__editor node-msg-text__editor__carousel p-0">
+          <input class="display-none" disabled type="text" ng-model="item.subtitle" class="custom_carousel_textarea" mentio mentio-typed-text="typedTerm"
+          mentio-trigger-char="'{'" mentio-select="renderVariable(item)" mentio-items="variables | filter:label:typedTerm"></input>
+          <ng-quill-editor bounds="self" ng-model="item.subtitle" on-editor-created="multiEditorCreated('SEND_CAROUSEL', $index, editor, html, text, content, delta, oldDelta, source)"
+              placeholder="setLabelValues.carousalModal.placeHolders.typeSubheading" preserve-whitespace="true" track-changes="all"
+              modules="setValues.editor.toolbarOptions" formats="setValues.editor.formats">
+          </ng-quill-editor>
+          <formatting-support-tooltip class="carousel-support-tooltip"></formatting-support-tooltip>
+      </div>
+      <div class="col-md-12 carousel-item-buttons" ng-show="item.buttons.length>0" ng-repeat="button in item.buttons track by $index">
+          <button type="button" class="close mr-neg-14" ng-click="removebutton($parent.$index,$index)">&times;</button>
+          <button type="button" ng-click="updatebuttoncontent($parent.$index,$index)" class="custom_carousel_buttonname" ng-bind='button.title'></button>
+      </div>
+      <div class="col-md-12 carousel-item-buttons">
+          <button type="button" ng-bind="setLabelValues.buttons.addButton" class="custom_carousel_buttonname carousel-item-buttons-add" ng-show="item.buttons.length<3" ng-click="showbuttonpopup($index)"></button>
+      </div>
+    </div>
+  </div> -->
 </div>
 
