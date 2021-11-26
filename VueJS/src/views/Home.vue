@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <h1>This is the first page</h1>
+    <h3><router-link to="/dateTime-local">dateTime-local</router-link></h3>
     <h3><router-link to="/star-ratings">Star ratings</router-link></h3>
     <h3><router-link to="/circular-menu">Cicular Menu</router-link></h3>
     <h3><router-link to="/video-player">Video Player</router-link></h3>

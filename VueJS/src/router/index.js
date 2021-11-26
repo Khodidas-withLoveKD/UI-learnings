@@ -11,6 +11,11 @@ const routes = [
     component: Home
   },
   {
+    path: '/dateTime-local',
+    name: 'dateTime-Local',
+    component: () => import('../views/dateTime-Local.vue')
+  },
+  {
     path: '/star-ratings',
     name: 'AwesomeStarRating',
     component: () => import('../views/AwesomeStarRating.vue')
